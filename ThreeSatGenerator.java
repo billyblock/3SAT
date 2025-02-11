@@ -33,13 +33,7 @@ public class ThreeSatGenerator {
             equation.add(clause);
 
         }
-        System.out.println("");
-        System.out.println("Equation before formats: ");
-        for(int i = 0; i < equation.size(); i++){
-            for(int j = 0; j < equation.get(i).length; j++){
-                System.out.println(equation.get(i)[j]);
-            }
-        }
+
         return equation;
     }
 
@@ -50,20 +44,36 @@ public class ThreeSatGenerator {
         return generate(vars, clauses);
     }
 
-    public static void print(List<int[]> equation){
+    public static void print(List<int[]> equation) {
         System.out.println("equation: ");
         int i = 0;
-        for(int[] eachClause: equation){
+        for (int[] eachClause : equation) {
             String var1 = format(eachClause[0]);
             String var2 = format(eachClause[1]);
             String var3 = format(eachClause[2]);
-            if (i == 0) System.out.printf("(%s V %s V %s) ", var1, var2, var3);
-            else System.out.printf("AND (%s V %s V %s) ", var1, var2, var3);
+            if (i == 0)
+                System.out.printf("(%s V %s V %s) ", var1, var2, var3);
+            else
+                System.out.printf("AND (%s V %s V %s) ", var1, var2, var3);
             i++;
         }
     }
 
-    private static String format(int literal){
+    public static void printUnformatted(List<int[]> equation) {
+        System.out.println("");
+        System.out.println("Unformatted Equation: ");
+        System.out.print("{ ");
+        for(int i = 0; i < equation.size(); i++){
+            System.out.print("[ ");
+            for(int j = 0; j < equation.get(i).length; j++){
+                System.out.print(equation.get(i)[j] + " ");
+            }
+            System.out.print("]");
+        }
+        System.out.print(" }");
+    }
+
+    private static String format(int literal) {
         return (literal < 0) ? "¬x" + (-literal) : "x" + literal;
     }
 

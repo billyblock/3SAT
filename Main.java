@@ -5,6 +5,7 @@ public class Main {
         List<int[]> equation = ThreeSatGenerator.generate(9,3);
 
         ThreeSatGenerator.print(equation);
+        ThreeSatGenerator.printUnformatted(equation);
 
     }
 }
