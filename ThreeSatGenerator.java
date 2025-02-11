@@ -33,7 +33,13 @@ public class ThreeSatGenerator {
             equation.add(clause);
 
         }
-
+        System.out.println("");
+        System.out.println("Equation before formats: ");
+        for(int i = 0; i < equation.size(); i++){
+            for(int j = 0; j < equation.get(i).length; j++){
+                System.out.println(equation.get(i)[j]);
+            }
+        }
         return equation;
     }
 
