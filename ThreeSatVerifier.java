@@ -1,7 +1,9 @@
 import java.util.*;
 
+// Util class to verify a given 3sat equation
 public class ThreeSatVerifier {
-    // Verifies the given equation against the solution given. Assuming it is given in Conjunctive Normal Form 
+    // Verifies the given equation against the solution given. Assuming it is given
+    // in Conjunctive Normal Form
     public static boolean verify(List<int[]> equation, boolean[] solution) {
         if (!isCorrectFormat(equation))
             return false;
@@ -28,7 +30,9 @@ public class ThreeSatVerifier {
         }
         return true;
     }
-    // Turns the equation into a solved equation with the solutions turth values instead of variables.
+
+    // Turns the equation into a solved equation with the solutions turth values
+    // instead of variables.
     public static List<boolean[]> createSolvedEquation(List<int[]> equation, boolean[] solution) {
         List<boolean[]> solved = new ArrayList<boolean[]>();
 
@@ -36,7 +40,12 @@ public class ThreeSatVerifier {
             boolean[] clause = new boolean[3];
             for (int j = 0; j < equation.get(i).length; j++) {
                 int var = equation.get(i)[j];
-                clause[j] = solution[var - 1];
+                if (var > 0){
+                    clause[j] = solution[var - 1];
+                }
+                else {
+                    clause[j] = !solution[var - 1];
+                }
             }
             solved.set(i, clause);
         }
