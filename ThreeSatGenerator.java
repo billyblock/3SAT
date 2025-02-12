@@ -1,5 +1,5 @@
 import java.util.*;
-
+// Util class to generate 3sat equations
 public class ThreeSatGenerator {
     public static final Random generator = new Random();
 
@@ -36,14 +36,14 @@ public class ThreeSatGenerator {
 
         return equation;
     }
-
+    // Generates a 3sat with a random number of vars and clauses, anywhere between 1-25.
     public static List<int[]> generate() {
         int vars = (generator.nextInt(25) + 1);
         int clauses = (generator.nextInt(25) + 1);
 
         return generate(vars, clauses);
     }
-
+    // Prints a given equation
     public static void print(List<int[]> equation) {
         System.out.println("equation: ");
         int i = 0;
@@ -58,10 +58,9 @@ public class ThreeSatGenerator {
             i++;
         }
     }
-
+    // Prints what the equation actually looks like in list and array formatting.
     public static void printUnformatted(List<int[]> equation) {
-        System.out.println("");
-        System.out.println("Unformatted Equation: ");
+        System.out.println("\nUnformatted Equation: ");
         System.out.print("{ ");
         for(int i = 0; i < equation.size(); i++){
             System.out.print("[ ");
@@ -72,7 +71,7 @@ public class ThreeSatGenerator {
         }
         System.out.print(" }");
     }
-
+    // Formats the given variable (literal) into x or not x with subscript.
     private static String format(int literal) {
         return (literal < 0) ? "¬x" + (-literal) : "x" + literal;
     }
